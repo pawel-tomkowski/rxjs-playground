@@ -1,0 +1,13 @@
+.result-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
+.result {
+    height: 20px;
+    width: 20px;
+    border: 1px dashed gray;
+    margin: 1px;
+    text-align: center;
+}
