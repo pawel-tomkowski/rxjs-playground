@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, Observable, timer } from 'rxjs';
+import { fromEvent, interval, map, Observable, share, tap, timer } from 'rxjs';
+import { LoggingService } from 'src/app/logging.service';
 
 @Component({
   selector: 'app-observable',
@@ -7,22 +8,40 @@ import { interval, Observable, timer } from 'rxjs';
   styleUrls: ['./observable.component.scss'],
 })
 export class ObservableComponent implements OnInit {
-  interval$ = interval(1000);
-  intervalResult: number[] = [];
-  observable = new Observable((subscriber) => {
-    subscriber.next(1);
-    subscriber.next(2);
-    subscriber.next(3);
+  observable$ = new Observable((subscriber) => {
+    subscriber.next(Math.random());
+    subscriber.next(Math.random());
     setTimeout(() => {
-      subscriber.next(4);
-      subscriber.complete();
-    }, 1000);
-  });
-  constructor() {}
+      subscriber.next(Math.random());
+    }, 4000),
+      setTimeout(() => {
+        subscriber.next(Math.random());
+        subscriber.complete();
+      }, 8000);
+  }).pipe(
+    tap((el) => {
+      this.loggingService.addLog('observable', el.toString());
+    })
+  );
+
+  interval$ = interval(5000);
+
+  source$ = fromEvent(document, 'click').pipe(
+    map((el) => {
+      return el.timeStamp;
+    }),
+    tap((el) => {
+      this.loggingService.addLog('doc:click', el.toString());
+    })
+  );
+
+  intervalResult: number[] = [];
+  constructor(private readonly loggingService: LoggingService) {}
 
   ngOnInit(): void {
+    const interval = 'interval' + Math.random().toFixed(2);
     this.interval$.subscribe((el) => {
-      console.log(el);
+      this.loggingService.addLog(interval, el.toString());
       this.intervalResult.push(el);
     });
   }

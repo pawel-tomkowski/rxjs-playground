@@ -12,6 +12,7 @@ import { ObservableComponent } from './pages/observable/observable.component';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [AppComponent, ObservableComponent, SubjectPageComponent],
   imports: [
@@ -24,6 +25,7 @@ import { SubjectPageComponent } from './pages/subject-page/subject-page.componen
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

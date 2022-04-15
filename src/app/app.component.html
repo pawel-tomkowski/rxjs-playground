@@ -9,6 +9,14 @@
   </button>
   <span>Rxjs</span>
   <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="logsidenav.toggle()"
+  >
+    <mat-icon>receipt_long</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
@@ -28,4 +36,24 @@
   <mat-sidenav-content
     ><div [style.padding.px]="30"><router-outlet></router-outlet></div
   ></mat-sidenav-content>
+
+  <mat-sidenav #logsidenav mode="side" position="end">
+    <table
+      mat-table
+      [dataSource]="logs$ | async"
+      class="mat-elevation-z8 table-width"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Source</th>
+        <td mat-cell *matCellDef="let element">{{ element.source }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="content">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.content }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-sidenav>
 </mat-sidenav-container>

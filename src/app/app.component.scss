@@ -1,3 +1,10 @@
 .example-container {
     height: calc(100% - 64px);
 }
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.table-width {
+    width: 400px;
+}
