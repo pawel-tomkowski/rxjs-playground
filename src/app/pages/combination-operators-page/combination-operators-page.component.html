@@ -1,0 +1,353 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> combineLatest </mat-panel-title>
+      <mat-panel-description>
+        <code> combineLatest(obs1, obs2)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="combineLatestSubjectA$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new A
+        </button>
+        Observable A: {{ obsA$ | async }}
+        <div>
+          <span *ngFor="let value of obsAResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button
+          (click)="combineLatestSubjectB$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new B
+        </button>
+        Observable B: {{ obsB$ | async }}
+        <div>
+          <span *ngFor="let value of obsBResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        Combine AB: {{ combineLatest$ | async }}
+        <div>
+          <span *ngFor="let value of combineLastestResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> withLatestFrom </mat-panel-title>
+      <mat-panel-description>
+        <code> obs1.pipe(withLatestFrom(obs2))</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="subjectC$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new C
+        </button>
+        Observable C: {{ obsC$ | async }}
+        <div>
+          <span *ngFor="let value of obsCResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button
+          (click)="subjectD$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new D
+        </button>
+        Observable D: {{ obsD$ | async }}
+        <div>
+          <span *ngFor="let value of obsDResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        Combine CD: {{ withTheLatestFrom$ | async }}
+        <div>
+          <span *ngFor="let value of withTheLatestFromResult"
+            >[{{ value }}]</span
+          >
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> ForkJoin </mat-panel-title>
+      <mat-panel-description>
+        <code> forkJoin(obs1, obs2)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="subjectE$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new E
+        </button>
+        <button
+          (click)="subjectE$.complete()"
+          mat-raised-button
+          color="primary"
+        >
+          Complete E
+        </button>
+        Observable E: {{ obsE$ | async }}
+        <div>
+          <span *ngFor="let value of obsEResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button
+          (click)="subjectF$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new F
+        </button>
+        <button
+          (click)="subjectF$.complete()"
+          mat-raised-button
+          color="primary"
+        >
+          Complete F
+        </button>
+        Observable F: {{ obsF$ | async }}
+        <div>
+          <span *ngFor="let value of obsFResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>Combine EF: {{ forkJoin$ | async }}</div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> zip </mat-panel-title>
+      <mat-panel-description>
+        <code> zip(obs1, obs2)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="subjectG$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new G
+        </button>
+
+        Observable G: {{ obsE$ | async }}
+        <div>
+          <span *ngFor="let value of obsGResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button
+          (click)="subjectH$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new H
+        </button>
+
+        Observable H: {{ obsH$ | async }}
+        <div>
+          <span *ngFor="let value of obsHResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>Combine GH: {{ zip$ | async }}</div>
+      <div>
+        <span *ngFor="let value of zipResult">[{{ value }}]</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> concat </mat-panel-title>
+      <mat-panel-description>
+        <code> concat(obs1, obs2)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="subjectI$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new I
+        </button>
+        <button
+          (click)="subjectI$.complete()"
+          mat-raised-button
+          color="primary"
+        >
+          Complete I
+        </button>
+        Observable I: {{ obsI$ | async }}
+        <div>
+          <span *ngFor="let value of obsIResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button
+          (click)="subjectJ$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new J
+        </button>
+        <button
+          (click)="subjectJ$.complete()"
+          mat-raised-button
+          color="primary"
+        >
+          Complete F
+        </button>
+
+        Observable J: {{ obsJ$ | async }}
+        <div>
+          <span *ngFor="let value of obsJResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>Combine IJ: {{ concat$ | async }}</div>
+      <div>
+        <span *ngFor="let value of concatResult">[{{ value }}]</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> pairwise </mat-panel-title>
+      <mat-panel-description>
+        <code> obs1.pipe(pairwise())</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div>
+      <div>
+        <button
+          (click)="subjectK$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new K
+        </button>
+        Observable K: {{ obsK$ | async }}
+        <div>
+          <span *ngFor="let value of obsKResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        Combine K: {{ pairwise$ | async }}
+        <div>
+          <span *ngFor="let value of pairwiseResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> merge </mat-panel-title>
+      <mat-panel-description>
+        <code> merge(obs1, obs2)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="subjectM$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new M
+        </button>
+
+        Observable M: {{ obsM$ | async }}
+        <div>
+          <span *ngFor="let value of obsMResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button
+          (click)="subjectN$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new N
+        </button>
+
+        Observable N: {{ obsN$ | async }}
+        <div>
+          <span *ngFor="let value of obsNResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div>Combine MN: {{ merge$ | async }}</div>
+      <div>
+        <span *ngFor="let value of mergeResult">[{{ value }}]</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

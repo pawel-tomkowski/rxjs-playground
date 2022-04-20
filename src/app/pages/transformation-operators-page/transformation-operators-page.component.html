@@ -1,0 +1,151 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> map </mat-panel-title>
+      <mat-panel-description>
+        <code> obs.pipe(map())</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        Observable A: {{ obsA$ | async }}
+        <div>
+          <span *ngFor="let value of obsAResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> scan </mat-panel-title>
+      <mat-panel-description>
+        <code> obs.pipe(scan())</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>Observable B: {{ obsB$ | async }}</div>
+
+      <div>Scan B: {{ scan$ | async }}</div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> buffer </mat-panel-title>
+      <mat-panel-description>
+        <code> obs.pipe(bufferCount())</code>
+        <code> obs.pipe(bufferTime())</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>Observable C: {{ obsC$ | async }}</div>
+
+      <div>Buffer 5s C: {{ bufferTime$ | async }}</div>
+      <div>Buffer 5 elements C: {{ bufferCount$ | async }}</div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> switchMap </mat-panel-title>
+      <mat-panel-description>
+        <code> obs.pipe(switchMap(obs2))</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>Subject D: {{ subjectD$ | async }}</div>
+      <div>
+        Subject D Results:
+        <span *ngFor="let value of subjectDResult">[{{ value }}]</span>
+      </div>
+      <div>Observable D: {{ obsD$ | async }}</div>
+
+      <div>
+        Observable D Results:
+        <span *ngFor="let value of obsDResult">[{{ value }}]</span>
+      </div>
+
+      <button (click)="subjectD$.next('D1')" mat-raised-button color="primary">
+        Publish new D1
+      </button>
+      <button (click)="subjectD$.next('D2')" mat-raised-button color="primary">
+        Publish new D2
+      </button>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> mergeMap </mat-panel-title>
+      <mat-panel-description>
+        <code> obs.pipe(mergeMap(obs2))</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>Subject E: {{ subjectE$ | async | json }}</div>
+      <div>
+        Subject E Results:
+        <span *ngFor="let value of subjectEResult">[{{ value | json }}]</span>
+      </div>
+      <div>Observable E: {{ obsE$ | async | json }}</div>
+
+      <div>
+        Observable E results:
+        <span *ngFor="let value of obsEResult">[{{ value | json }}]</span>
+      </div>
+
+      <button
+        (click)="subjectE$.next({ value: 'E1', time: 5000 })"
+        mat-raised-button
+        color="primary"
+      >
+        Publish new E1
+      </button>
+      <button
+        (click)="subjectE$.next({ value: 'E2', time: 10000 })"
+        mat-raised-button
+        color="primary"
+      >
+        Publish new E2
+      </button>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> concatMap </mat-panel-title>
+      <mat-panel-description>
+        <code> obs.pipe(concatMap(obs2))</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>Subject F: {{ subjectF$ | async | json }}</div>
+      <div>
+        Subject F results:
+        <span *ngFor="let value of subjectFResult">[{{ value | json }}]</span>
+      </div>
+      <div>Observable F: {{ obsF$ | async | json }}</div>
+
+      <div>
+        Observable F results:
+        <span *ngFor="let value of obsFResult">[{{ value | json }}]</span>
+      </div>
+
+      <button
+        (click)="subjectF$.next({ value: 'F1', time: 5000 })"
+        mat-raised-button
+        color="primary"
+      >
+        Publish new E1
+      </button>
+      <button
+        (click)="subjectF$.next({ value: 'F2', time: 10000 })"
+        mat-raised-button
+        color="primary"
+      >
+        Publish new E2
+      </button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

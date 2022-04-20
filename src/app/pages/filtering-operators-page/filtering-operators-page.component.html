@@ -1,1 +1,95 @@
-<p>filtering-operators-page works!</p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Iff </mat-panel-title>
+      <mat-panel-description>
+        <code> iff(obs1, obs2)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    {{ iff$ | async }}
+    <button (click)="saveEntity$.next({})" mat-raised-button color="primary">
+      Save new
+    </button>
+    <button
+      (click)="saveEntity$.next({ id: 1 })"
+      mat-raised-button
+      color="primary"
+    >
+      Save existing
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Debounce </mat-panel-title>
+      <mat-panel-description>
+        <code> debounce(ms)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Rxjs</mat-label>
+      <input
+        matInput
+        placeholder="Debounce example"
+        (keyup)="debounceInputKeyUp($event)"
+      />
+    </mat-form-field>
+
+    Emitted value: {{ debounce$ | async }}
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Distinct until changed </mat-panel-title>
+      <mat-panel-description>
+        <code> distinctUntilChanged()</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Rxjs</mat-label>
+      <input
+        matInput
+        placeholder="Debounce example"
+        (keyup)="dinstictInputKeyUp($event)"
+      />
+    </mat-form-field>
+    Emitted value: {{ distinctUntilChanged$ | async }}
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Filter </mat-panel-title>
+      <mat-panel-description>
+        <code> filter(expression)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <button (click)="pushToFilterValue()" mat-raised-button color="primary">
+      pushToFilterValue
+    </button>
+    Emitted value: {{ filter$ | async }}
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> TakeUntil </mat-panel-title>
+      <mat-panel-description>
+        <code> takeUntil(observ)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <button
+      (click)="takeUntilSubject$.next(null)"
+      mat-raised-button
+      color="primary"
+    >
+      Unsubscribe
+    </button>
+    Emitted value: {{ takeUntil$ | async }}
+  </mat-expansion-panel>
+</mat-accordion>
+
+<p>Audit time: {{ $auditTime | async }}</p>
+<p>Throttle time: {{ $throttleTime | async }}</p>
