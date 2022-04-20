@@ -14,8 +14,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
 import { MatTableModule } from '@angular/material/table';
 import { CreationOperatorsPageComponent } from './pages/creation-operators-page/creation-operators-page.component';
+import { FilteringOperatorsPageComponent } from './pages/filtering-operators-page/filtering-operators-page.component';
 @NgModule({
-  declarations: [AppComponent, ObservableComponent, SubjectPageComponent, CreationOperatorsPageComponent],
+  declarations: [AppComponent, ObservableComponent, SubjectPageComponent, CreationOperatorsPageComponent, FilteringOperatorsPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
