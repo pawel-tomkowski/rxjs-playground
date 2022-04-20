@@ -1,1 +1,88 @@
-<p>subject-page works!</p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Subject </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ subject$ | async }}
+    </button>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        *ngFor="let result of subjectResults | slice: -20"
+      >
+        {{ result }}
+      </button>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        color="secondary"
+        *ngFor="let result of subjectResultsSecond | slice: -20"
+      >
+        {{ result }}
+      </button>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> BehaviourSubject </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="result-container">
+      <button mat-raised-button color="primary">
+        {{ behaviourSubject$ | async }}
+      </button>
+      <button mat-raised-button color="primary">
+        {{ behaviourSubject$.value }}
+      </button>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Replay </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ replaySubject$ | async }}
+    </button>
+    <button mat-raised-button color="primary">
+      {{ replaySubject$ | async }}
+    </button>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        *ngFor="let result of replaySubjectResult | slice: -20"
+      >
+        {{ result }}
+      </button>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        *ngFor="let result of replaySubjectResultSecond | slice: -20"
+      >
+        {{ result }}
+      </button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Hot vs Cold </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="result-container">
+    <div>
+      <button mat-raised-button color="primary">
+        HOT: {{ subject$ | async }}
+      </button>
+      <button mat-raised-button color="primary">
+        HOT {{ subject$ | async }}
+      </button>
+    </div>
+  </div>
+</mat-expansion-panel>
