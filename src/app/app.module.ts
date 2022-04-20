@@ -13,8 +13,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
 import { MatTableModule } from '@angular/material/table';
+import { CreationOperatorsPageComponent } from './pages/creation-operators-page/creation-operators-page.component';
 @NgModule({
-  declarations: [AppComponent, ObservableComponent, SubjectPageComponent],
+  declarations: [AppComponent, ObservableComponent, SubjectPageComponent, CreationOperatorsPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

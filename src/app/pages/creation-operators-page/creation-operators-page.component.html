@@ -1,0 +1,71 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Of </mat-panel-title>
+      <mat-panel-description>
+        <code>of(...)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ of$ | async }}
+    </button>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> from </mat-panel-title>
+      <mat-panel-description>
+        <code>from(...)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ from$ | async }}
+    </button>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Timer </mat-panel-title>
+      <mat-panel-description>
+        <code>timer(...)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ timer$ | async }}
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Interval </mat-panel-title>
+      <mat-panel-description>
+        <code>interval(...)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ interval$ | async }}
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Timer </mat-panel-title>
+      <mat-panel-description>
+        <code>timer(...)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ timer$ | async }}
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> FromEvent </mat-panel-title>
+      <mat-panel-description>
+        <code>fromEvent(...)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary">
+      {{ fromEvent$ | async }}
+    </button>
+  </mat-expansion-panel>
+</mat-accordion>
