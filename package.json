@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:gh": "ng build --prod --base-href \"https://vaalgrind.github.io/rxjs-playground/\"",
+    "deploy": "npx angular-cli-ghpages --dir=dist/rxjs"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "@ngneat/until-destroy": "^9.0.2",
+    "angular-cli-ghpages": "^1.0.0",
+    "ng2-charts": "^3.0.0-rc.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
