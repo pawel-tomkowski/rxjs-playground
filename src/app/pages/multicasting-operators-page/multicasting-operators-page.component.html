@@ -1,1 +1,69 @@
-<p>multicasting-operators-page works!</p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Share </mat-panel-title>
+      <mat-panel-description>
+        <code> obs$.pipe(share())</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="multicast$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new A
+        </button>
+        <p>Observable A (first subscription): {{ obsA$ | async }}</p>
+        <p>Observable A (second subscription): {{ obsA$ | async }}</p>
+        <p>Observable A (third subscription): {{ obsA$ | async }}</p>
+
+        <div>
+          <span *ngFor="let value of obsAResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> shareReplay </mat-panel-title>
+      <mat-panel-description>
+        <code> obs$.pipe(shareReplay(n))</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="multicastReplay$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new B
+        </button>
+        <p>Observable B (first subscription): {{ obsB$ | async }}</p>
+        <p>Observable B (second subscription): {{ obsB$ | async }}</p>
+        <p>Observable B (third subscription): {{ obsB$ | async }}</p>
+
+        <div>
+          <span *ngFor="let value of obsBResult">[{{ value }}]</span>
+        </div>
+
+        <button
+          (click)="showLateSubscriber = true"
+          mat-raised-button
+          color="primary"
+        >
+          Late subscription
+        </button>
+        <ng-container *ngIf="showLateSubscriber">
+          <p>Observable A (first subscription): {{ obsA$ | async }}</p>
+          <p>Observable B (first subscription): {{ obsB$ | async }}</p>
+        </ng-container>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
