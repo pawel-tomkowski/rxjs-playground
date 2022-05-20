@@ -13,4 +13,8 @@ export class AppComponent {
   constructor(private readonly loggingService: LoggingService) {
     this.logs$ = this.loggingService.$logs;
   }
+
+  clearLogsClick() {
+    this.loggingService.clearLogs();
+  }
 }

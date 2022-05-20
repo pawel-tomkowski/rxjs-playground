@@ -14,4 +14,8 @@ export class LoggingService {
     const newLogs = [{ source, content }, ...this._logs.getValue()];
     this._logs.next(newLogs);
   }
+
+  clearLogs() {
+    this._logs.next([]);
+  }
 }

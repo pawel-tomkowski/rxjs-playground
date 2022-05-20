@@ -46,6 +46,20 @@
           role="listitem"
           >Transformation operators</mat-list-item
         >
+
+        <mat-list-item [routerLink]="['utility-operators']" role="listitem"
+          >Utility operators</mat-list-item
+        >
+
+        <mat-list-item [routerLink]="['multicasting-operators']" role="listitem"
+          >Multicasting operators</mat-list-item
+        >
+
+        <mat-list-item
+          [routerLink]="['catching-errors-operators']"
+          role="listitem"
+          >Catching erros operators</mat-list-item
+        >
       </mat-nav-list>
     </div></mat-sidenav
   >
@@ -54,6 +68,9 @@
   ></mat-sidenav-content>
 
   <mat-sidenav #logsidenav mode="side" position="end">
+    <button (click)="clearLogsClick()" mat-raised-button color="primary">
+      Clear logs
+    </button>
     <table
       mat-table
       [dataSource]="logs$ | async"
