@@ -35,7 +35,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'catching-error-operators',
+    path: 'catching-errors-operators',
     component: ErrorHandlingOperatorsPageComponent,
   },
 ];

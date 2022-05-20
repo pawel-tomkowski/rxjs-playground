@@ -1,1 +1,26 @@
-<p>error-handling-operators-page works!</p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> catchErrors </mat-panel-title>
+      <mat-panel-description>
+        <code> catchErrors(->func)</code>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div>
+        <button
+          (click)="tapSubjectA$.next(true)"
+          mat-raised-button
+          color="primary"
+        >
+          Publish new A
+        </button>
+
+        Observable A: {{ obsA$ | async }}
+        <div>
+          <span *ngFor="let value of obsAResult">[{{ value }}]</span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
