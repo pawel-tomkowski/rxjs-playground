@@ -18,6 +18,9 @@ import { FilteringOperatorsPageComponent } from './pages/filtering-operators-pag
 import { MatInputModule } from '@angular/material/input';
 import { CombinationOperatorsPageComponent } from './pages/combination-operators-page/combination-operators-page.component';
 import { TransformationOperatorsPageComponent } from './pages/transformation-operators-page/transformation-operators-page.component';
+import { UtilityOperatorsPageComponent } from './pages/utility-operators-page/utility-operators-page.component';
+import { MulticastingOperatorsPageComponent } from './pages/multicasting-operators-page/multicasting-operators-page.component';
+import { ErrorHandlingOperatorsPageComponent } from './pages/error-handling-operators-page/error-handling-operators-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,9 @@ import { TransformationOperatorsPageComponent } from './pages/transformation-ope
     FilteringOperatorsPageComponent,
     CombinationOperatorsPageComponent,
     TransformationOperatorsPageComponent,
+    UtilityOperatorsPageComponent,
+    MulticastingOperatorsPageComponent,
+    ErrorHandlingOperatorsPageComponent,
   ],
   imports: [
     BrowserModule,
