@@ -1,17 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { User } from 'src/app/store/user.model';
-import { Load } from 'src/app/store/users/users.action';
+import { UsersService } from 'src/app/store/users/users.service';
 
 @Component({
   selector: 'app-users-list-page',
   templateUrl: './users-list-page.component.html',
   styleUrls: ['./users-list-page.component.scss'],
 })
-export class UsersListPageComponent implements OnInit {
-  constructor(private store: Store<{ users: User[] }>) {}
+export class UsersListPageComponent implements OnDestroy {
+  users$: Observable<User[]>;
+  selectedPage$: Observable<number>;
+  totalPages$: Observable<number>;
 
-  ngOnInit(): void {
-    this.store.dispatch(Load());
+  resultsLength = 0;
+
+  displayedColumns: string[] = ['first_name', 'last_name'];
+  takeUntilSubject$ = new Subject();
+
+  constructor(private readonly usersService: UsersService) {
+    this.users$ = this.usersService.users$;
+    this.selectedPage$ = this.usersService.selectedPage$;
+    this.totalPages$ = this.usersService.totalPages$;
+    this.selectedPage$
+      .pipe(takeUntil(this.takeUntilSubject$))
+      .subscribe((page) => {
+        this.usersService.loadUsers(page);
+      });
+  }
+
+  changePage(page: number) {
+    this.usersService.loadUsers(page);
+  }
+
+  ngOnDestroy(): void {
+    this.takeUntilSubject$.next(true);
   }
 }

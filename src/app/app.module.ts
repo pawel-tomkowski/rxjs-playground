@@ -30,6 +30,7 @@ import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { UsersEffect } from './store/users/users.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatExpansionModule,
     MatTableModule,
     MatInputModule,
+    MatPaginatorModule,
     HttpClientModule,
     StoreModule.forRoot({ [USERS]: UsersReducer }),
     EffectsModule.forRoot([UsersEffect]),
