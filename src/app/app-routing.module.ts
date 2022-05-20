@@ -9,6 +9,7 @@ import { MulticastingOperatorsPageComponent } from './pages/multicasting-operato
 import { ObservableComponent } from './pages/observable/observable.component';
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
 import { TransformationOperatorsPageComponent } from './pages/transformation-operators-page/transformation-operators-page.component';
+import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
 import { UtilityOperatorsPageComponent } from './pages/utility-operators-page/utility-operators-page.component';
 
 const routes: Routes = [
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'catching-errors-operators',
     component: ErrorHandlingOperatorsPageComponent,
+  },
+
+  {
+    path: 'users',
+    component: UsersListPageComponent,
   },
 ];
 

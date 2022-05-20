@@ -21,6 +21,15 @@ import { TransformationOperatorsPageComponent } from './pages/transformation-ope
 import { UtilityOperatorsPageComponent } from './pages/utility-operators-page/utility-operators-page.component';
 import { MulticastingOperatorsPageComponent } from './pages/multicasting-operators-page/multicasting-operators-page.component';
 import { ErrorHandlingOperatorsPageComponent } from './pages/error-handling-operators-page/error-handling-operators-page.component';
+import { UsersListPageComponent } from './pages/users-list-page/users-list-page.component';
+import { StoreModule } from '@ngrx/store';
+import { USERS } from './store/users/users.conts';
+import { UsersReducer } from './store/users/users.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { UsersEffect } from './store/users/users.effects';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +42,7 @@ import { ErrorHandlingOperatorsPageComponent } from './pages/error-handling-oper
     UtilityOperatorsPageComponent,
     MulticastingOperatorsPageComponent,
     ErrorHandlingOperatorsPageComponent,
+    UsersListPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +56,12 @@ import { ErrorHandlingOperatorsPageComponent } from './pages/error-handling-oper
     MatExpansionModule,
     MatTableModule,
     MatInputModule,
+    HttpClientModule,
+    StoreModule.forRoot({ [USERS]: UsersReducer }),
+    EffectsModule.forRoot([UsersEffect]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
