@@ -8,14 +8,18 @@ export class UsersApiService {
   constructor(private readonly httpClient: HttpClient) {}
 
   getUsers(page = 1) {
-    return this.httpClient.get(ApiConfig.ALL_USERS, {
+    return this.httpClient.get(ApiConfig.USERS, {
       params: {
         page,
       },
     });
   }
+
+  getUserById(id: string) {
+    return this.httpClient.get(ApiConfig.USERS + `/${id}`);
+  }
 }
 
 export enum ApiConfig {
-  ALL_USERS = 'https://reqres.in/api/users',
+  USERS = 'https://reqres.in/api/users',
 }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { User } from 'src/app/store/user.model';
 import { UsersService } from 'src/app/store/users/users.service';
@@ -15,10 +16,13 @@ export class UsersListPageComponent implements OnDestroy {
 
   resultsLength = 0;
 
-  displayedColumns: string[] = ['first_name', 'last_name'];
+  displayedColumns: string[] = ['first_name', 'last_name', 'actions'];
   takeUntilSubject$ = new Subject();
 
-  constructor(private readonly usersService: UsersService) {
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly router: Router
+  ) {
     this.users$ = this.usersService.users$;
     this.selectedPage$ = this.usersService.selectedPage$;
     this.totalPages$ = this.usersService.totalPages$;
@@ -31,6 +35,10 @@ export class UsersListPageComponent implements OnDestroy {
 
   changePage(page: number) {
     this.usersService.loadUsers(page);
+  }
+
+  navigateToDetailsClick(id: string) {
+    this.router.navigateByUrl('user-details/' + id);
   }
 
   ngOnDestroy(): void {

@@ -31,6 +31,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { UsersEffect } from './store/users/users.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserDetailsPageComponent } from './pages/user-details-page/user-details-page.component';
+import { USER } from './store/user/user.const';
+import { UserReducer } from './store/user/user.reducer';
+import { UserEffect } from './store/user/user.effect';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +50,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MulticastingOperatorsPageComponent,
     ErrorHandlingOperatorsPageComponent,
     UsersListPageComponent,
+    UserDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +65,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,
+    MatCardModule,
     HttpClientModule,
-    StoreModule.forRoot({ [USERS]: UsersReducer }),
-    EffectsModule.forRoot([UsersEffect]),
+    StoreModule.forRoot({ [USERS]: UsersReducer, [USER]: UserReducer }),
+
+    EffectsModule.forRoot([UsersEffect, UserEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
